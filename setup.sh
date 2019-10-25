@@ -33,3 +33,6 @@ sudo su ${app_name} << EOF
 virtualenv venv
 pip3 install -r requirements.txt
 EOF
+
+sudo systemctl daemon-reload
+sudo systemctl restart ${app_name}
