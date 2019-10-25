@@ -24,9 +24,7 @@ sed  "$(IFS=; echo "${service_environment[*]}")" ${app_name}.service | sudo tee 
 # install folder
 install_folder=/opt/bookshelve-server
 sudo mkdir -p ${install_folder}
-for file in app.py wsgi.py requirements.txt; do
-    cp ${file} ${install_folder}
-done
+sudo cp -r . ${install_folder}
 sudo chown -R ${app_name}:${app_name} ${install_folder}
 
 # install dependencies
