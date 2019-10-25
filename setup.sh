@@ -4,7 +4,7 @@
 app_name=jenkins-scm-backend
 
 # create server user if they don't exist
-if cat /etc/passwd | awk -F: '{ print $1}' | grep ${app_name}; then
+if ! cat /etc/passwd | awk -F: '{ print $1}' | grep ${app_name}; then
     sudo useradd -m -s /bin/bash ${app_name}
 fi
 
