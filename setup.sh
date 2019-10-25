@@ -18,8 +18,7 @@ service_environment=(
     "s/{{MYSQL_USER}}/${MYSQL_USER}/g;" 
     "s/{{MYSQL_PASSWORD}}/${MYSQL_PASSWORD}}/g;" 
 )
-sed  "$(IFS=; echo "${service_environment[*]}")" \ 
-    ${app_name}.service | \
+sed  "$(IFS=; echo "${service_environment[*]}")" ${app_name}.service | \
     sudo tee /etc/systemd/system/${app_name}.service
 
 # install folder
