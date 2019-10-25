@@ -2,6 +2,10 @@
 Description=Jenkins SCM Module Backend Server
 
 [Service]
+Environment=MYSQL_HOST={{MYSQL_HOST}}
+Environment=MYSQL_USER={{MYSQL_USER}}
+Environment=MYSQL_DATABASE={{MYSQL_DATABASE}}
+Environment=MYSQL_PASSWORD={{MYSQL_PASSWORD}}
 User=jenkins-scm-backend
 WorkingDirectory=/opt/bookshelve-server
 ExecStart=/opt/bookshelve-server/venv/bin/python /opt/bookshelve-server/app.py

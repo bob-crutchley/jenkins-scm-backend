@@ -12,7 +12,15 @@ fi
 sudo apt install -y python3 python3-pip
 
 # configure systemd service
-sudo cp ${app_name}.service /etc/systemd/system/
+service_environment=(
+    "s/{{MYSQL_HOST}}/${MYSQL_HOST}/g;"
+    "s/{{MYSQL_DATABASE}}/${MYSQL_DATABASE}/g;" 
+    "s/{{MYSQL_USER}}/${MYSQL_USER}/g;" 
+    "s/{{MYSQL_PASSWORD}}/${MYSQL_PASSWORD}}/g;" 
+)
+sed  "$(IFS=; echo "${service_environment[*]}")" \ 
+    ${app_name}.service | \
+    sudo tee /etc/systemd/system/${app_name}.service
 
 # install folder
 install_folder=/opt/bookshelve-server
