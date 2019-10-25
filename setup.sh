@@ -31,5 +31,5 @@ sudo chown -R ${app_name}:${app_name} ${install_folder}
 cd ${install_folder}
 sudo su ${app_name} << EOF
 virtualenv venv
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 EOF
