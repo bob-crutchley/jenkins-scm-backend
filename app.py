@@ -1,6 +1,8 @@
 from flask import Flask, request, send_from_directory
+from flask import Response
 import pymysql.cursors
 import os
+import json
 
 app = Flask(__name__, static_url_path='')
 
@@ -21,6 +23,6 @@ def get_all_books():
             sql = "SELECT * FROM Books;"
             cursor.execute(sql)
             books = cursor.fetchall()
-            return str(books)
+            return Response(json.dumps(books), mimetype='application/json')
     finally:
         connection.close()
