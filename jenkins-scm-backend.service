@@ -8,7 +8,7 @@ Environment=MYSQL_DATABASE={{MYSQL_DATABASE}}
 Environment=MYSQL_PASSWORD={{MYSQL_PASSWORD}}
 User=jenkins-scm-backend
 WorkingDirectory=/opt/bookshelve-server
-ExecStart=/opt/bookshelve-server/venv/bin/python3 /opt/bookshelve-server/app.py
+ExecStart=/opt/bookshelve-server/venv/bin/gunicorn --bind 0.0.0.0 /opt/bookshelve-server/wsgi.py
 
 [Install]
 WantedBy=multi-user.target
